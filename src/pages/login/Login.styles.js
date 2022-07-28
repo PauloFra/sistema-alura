@@ -18,11 +18,12 @@ export const DivCenter = styled.div`
    padding: 20px;
    display: flex;
    align-items: center;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
    flex-direction: column;
    justify-content: center;
 `
 export const DivDisplayFlex = styled.div`
-     display:flex;
+    display:flex;
     flex-direction: column;
 `
 export const FormLogin = styled.form`
@@ -50,13 +51,13 @@ export const LoginInput = styled.input`
 export const ButtonLogin = styled.button`
     border: 0;
     color: white;
-    background-color: pink;
+    background-color: #6E85B7;
     padding: 13px;
     cursor: pointer;
     transition: 0.5s;
     margin-bottom: 30px;
     :hover{
-        background-color: #f78498;
+        background-color: #2E85B7;
     }
 `
 export const DivForCheckbox = styled.div`

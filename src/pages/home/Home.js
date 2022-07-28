@@ -4,6 +4,7 @@ import { ContextProvider } from '../../context/MainContext'
 import Header from '../../components/header/Header'
 import api from '../../api'
 import * as Component from './Home.styles'
+import gif from '../../imagem/1488.gif'
 function Home() {
   const { teste , getInApi , linguages , postInApi} = useContext(ContextProvider)
   useEffect(()=>{
@@ -16,19 +17,21 @@ function Home() {
   if(!linguages){
     return (
       <>
-        <h1>Loading</h1>
+        <Component.DivLoading>
+          <img src={gif} />
+        </Component.DivLoading>
       </>
     )
   }
   console.log(linguages);
 
-  async function removeFromApi(id){
+  async function removeFromApi(item){
     try{
-      const { data } = api.delete(`linguagens/${id}`) 
+      const { data } = api.delete(`linguagens/${item.id}`) 
     }catch(error){
       console.log(error);
     }
-    alert('id linguagem removida')
+    alert(`a tecnologia ${item.title} foi excluida`)
     getInApi()
   }
 
@@ -36,31 +39,31 @@ function Home() {
     <>
       <Header />
       <Component.DivFatherHome>
-        <Component.TitleHome>Welcome Here</Component.TitleHome>
+        <Component.TitleHome>Linguagens</Component.TitleHome>
         <Component.DivContent>
           <Component.TableHome>
-            <thead>
-                <tr>
-                  <Component.ThTableHome>Icon</Component.ThTableHome>
+            <Component.THeadTableHome>
+                <Component.TrheadTableHome>
+                  <Component.ThTableHome paddingLeft="10px">Icon</Component.ThTableHome>
                   <Component.ThTableHome>Nome</Component.ThTableHome>
                   <Component.ThTableHome>Ranking</Component.ThTableHome>
                   <Component.ThTableHome>Actions</Component.ThTableHome>
-                </tr>
-            </thead>
+                </Component.TrheadTableHome>
+            </Component.THeadTableHome>
             <tbody>
           {
             linguages.length > 0  && linguages.map((item => (
 
-            <tr key={item.id}>
-                <Component.TdTableHome>
-                      <Component.DivImg src={item.image} width='60px' alt="" />   
+            <Component.TrTableHome key={item.id}>
+                <Component.TdTableHome paddingLeft="50px">
+                      <Component.DivImg src={item.image} width='70px' alt="" />   
                 </Component.TdTableHome>
                 <Component.TdTableHome><strong>{item.title}</strong></Component.TdTableHome>
                 <Component.TdTableHome>{item.ranking}</Component.TdTableHome>
                 <Component.TdTableHome>
-                    <button onClick={() => removeFromApi(item.id)}>Remove</button>
+                    <Component.ButtonDelete onClick={() => removeFromApi(item)}>Remove</Component.ButtonDelete>
                 </Component.TdTableHome>
-            </tr>
+            </Component.TrTableHome>
             )
             ))
           }

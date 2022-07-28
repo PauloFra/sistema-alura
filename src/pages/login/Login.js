@@ -2,8 +2,14 @@ import React from 'react'
 import * as Component from './Login.styles'
 import {Link} from 'react-router-dom'
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 function Login() {
- 
+ const navigate = useNavigate()
+
+  const handleLogin = (values) => {
+    alert(JSON.stringify(values,null,2))
+    navigate('/')
+  }
   const formik = useFormik({
     initialValues:{
       name:'',
@@ -11,7 +17,7 @@ function Login() {
       rememberMe:false
     },
     onSubmit: values => {
-      alert(JSON.stringify(values,null,2))
+      handleLogin(values)
     }
   });
 

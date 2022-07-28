@@ -13,9 +13,9 @@ function Header() {
         </div>
         <nav>
             <Ul>
-                <Li><Link to={'/'}>Listagem</Link></Li>
+                <Li><Link to={'/'}>Linguagens</Link></Li>
                 <Li><Link to={'/cadastro'}>Cadastro</Link></Li>
-                <Li>Logout</Li>
+                {/* <Li>Logout</Li> */}
             </Ul>
         </nav>
     </HeaderS>
